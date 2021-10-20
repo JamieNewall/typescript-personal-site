@@ -3,13 +3,8 @@ const path = require('path');
 
 
 module.exports = {
-  entry: ['webpack-hot-middleware/client', `./src/index.tsx`],
-  mode:"development",
-  devServer: {
-    contentBase: "public",
-    hot: true, 
-    stats: {colours: true}
-  },
+  entry: [`./src/index.tsx`],
+  mode:"production",  
   module: {
     rules: [
       {
@@ -24,8 +19,8 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve( './build'),
     publicPath: "/"
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+
 };  

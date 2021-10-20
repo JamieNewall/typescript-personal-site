@@ -1,9 +1,38 @@
 const express = require("express")
 import * as path from 'path'
-import { HotModuleReplacementPlugin, webpack } from 'webpack'
+const webpack = require("webpack")
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackConfig = require("./webpack.config")
+const webpackConfig = {
+  
+    entry: ['webpack-hot-middleware/client', `./src/index.tsx`],
+    mode:"development",
+    devServer: {
+      contentBase: "public",
+      hot: true, 
+      stats: {colours: true}
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
+      ],
+    },
+    resolve: {
+      extensions: ['.js', '.jsx','.tsx', '.ts'],
+    },
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve( 'public'),
+      publicPath: "/"
+    },
+    devtool: "source-map",
+    plugins: [new webpack.HotModuleReplacementPlugin()]
+  
+}
 
 const webpackCompiler = webpack(webpackConfig)
 const app = express()
@@ -12,7 +41,7 @@ app.use(webpackDevMiddleware(webpackCompiler))
 app.use(webpackHotMiddleware(webpackCompiler))
 app.use(express.static(`${__dirname}/public`))
 
-console.log('hello world!!!!')
+console.log('Server Running...')
 
 
 const PORT = process.env.port || 4000

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-  
+    "outDir": "./public",
     "noImplicitAny": false,
     "module": "es6",
     "target": "es5",
@@ -13,10 +13,7 @@
     "noUnusedParameters": false
     
   },
-  "compilerOptions": {
-    "sourceMap": true
-  },
-  "exclude":["node_modules","build/bundle.js", "prod.config.js"],
+  "exclude":["node_modules"],
   "watchOptions": {
     "watchDirectory": "useFsEvents",
     "watchFile": "useFsEvents"
