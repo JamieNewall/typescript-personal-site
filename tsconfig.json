@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
   
-    "noImplicitAny": false,
+    
+    "lib": ["es6","dom"],
+    "noImplicitAny": true, 
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "module": "es6",
     "target": "es5",
     "jsx": "react-jsx",
@@ -10,12 +14,11 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports":true,
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "sourceMap": true
     
   },
-  "compilerOptions": {
-    "sourceMap": true
-  },
+ 
   "exclude":["node_modules","build/bundle.js", "prod.config.js"],
   "watchOptions": {
     "watchDirectory": "useFsEvents",

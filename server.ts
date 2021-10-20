@@ -29,7 +29,7 @@ const webpackConfig = {
       path: path.resolve( 'public'),
       publicPath: "/"
     },
-    devtool: "source-map",
+    devtool: "inline-source-map",
     plugins: [new webpack.HotModuleReplacementPlugin()]
   
 }
@@ -46,6 +46,7 @@ console.log('Server Running...')
 
 const PORT = process.env.port || 4000
 
+// @ts-ignore
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/public/index.html`)
 })
